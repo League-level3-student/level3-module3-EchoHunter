@@ -66,14 +66,14 @@ public class _01_StringMethods {
         char ret2 = s2.trim().charAt(s2.trim().length()-1);
         char ret3 = s3.trim().charAt(s3.trim().length()-1);
       
-    	if ((ret1>ret2)&&(ret1>ret3)) {
+    	if ((ret1<ret2)&&(ret1<ret3)) {
 			return s1.trim();
 		}
-    	else if ((ret2>ret1)&&(ret2>ret3)) {
+    	else if ((ret2<ret1)&&(ret2<ret3)) {
 			return s2.trim();
 		}
-    	else if ((ret3>ret1)&&(ret3>ret2)) {
-    		return s2.trim();
+    	else if ((ret3<ret1)&&(ret3<ret2)) {
+    		return s3.trim();
     	}
     	return null;
     }
