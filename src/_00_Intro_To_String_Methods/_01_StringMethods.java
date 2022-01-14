@@ -1,6 +1,7 @@
 package _00_Intro_To_String_Methods;
 
 import java.util.Base64;
+import java.util.Iterator;
 
 /*
  * Visit the JavaDocs for the String class to view everything you can do with a String.
@@ -44,14 +45,15 @@ public class _01_StringMethods {
     // to underscores
     public static String formatSpaces(String s) {
         String substring = "underscores";
-        String[] words = s.split(substring);
         String ret = "";
-    	if(words.length-1>0) {
-    		ret = s.replace(' ','_');
-    	}
+       if(s.contains(substring)) {
+    	   s = s.replace(' ','_');
+   		ret = s;
+       }
     	else {
     		ret = s;
     	}
+
         return ret;
     }
 
@@ -60,7 +62,20 @@ public class _01_StringMethods {
     // You cannot assume there are no extra spaces around the name, but you can
     // assume there is only one space between the first and last name
     public static String lineLeader(String s1, String s2, String s3) {
-        return null;
+        char ret1 = s1.trim().charAt(s1.trim().length()-1);
+        char ret2 = s2.trim().charAt(s2.trim().length()-1);
+        char ret3 = s3.trim().charAt(s3.trim().length()-1);
+      
+    	if ((ret1>ret2)&&(ret1>ret3)) {
+			return s1.trim();
+		}
+    	else if ((ret2>ret1)&&(ret2>ret3)) {
+			return s2.trim();
+		}
+    	else if ((ret3>ret1)&&(ret3>ret2)) {
+    		return s2.trim();
+    	}
+    	return null;
     }
 
     // Return the sum of all numerical digits in the String
