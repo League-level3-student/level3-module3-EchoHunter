@@ -1,5 +1,6 @@
 package _00_Intro_To_String_Methods;
 
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Iterator;
 
@@ -80,30 +81,67 @@ public class _01_StringMethods {
 
     // Return the sum of all numerical digits in the String
     public static int numeralSum(String s) {
-        return 0;
+        int returnInt = 0;
+    	for (int i = 0; i < s.length(); i++) {
+			if (Character.isDigit(s.charAt(i))) {
+				returnInt += Integer.parseInt(""+s.charAt(i));
+			}
+		}
+        
+    	return returnInt;
     }
 
     // Return the number of times String substring appears in String s
     public static int substringCount(String s, String substring) {
-        return 0;
+        int stringCount = 0;
+        int index = 0;
+        index = s.indexOf(substring);
+        while( index != -1 ) {
+            stringCount++;
+            index = s.indexOf(substring, index + substring.length());
+        }
+    	return stringCount;
     }
 
     // Call Utilities.encrypt at the bottom of this file to encrypt String s
     public static String encrypt(String s, char key) {
-        return null;
+        
+        byte[] text = new byte[s.length()];
+        char [] c = s.toCharArray();
+        for (int i = 0; i < text.length; i++) {
+			text[i] = (byte) c[i];
+		}
+       
+    	
+    	return Utilities.encrypt(text, (byte)key);
     }
 
     // Call Utilities.decrypt at the bottom of this file to decrypt the
     // cyphertext (encrypted text)
     public static String decrypt(String s, char key) {
-        return null;
+         	
+    	return Utilities.decrypt(s,(byte)key);
     }
 
     // Return the number of words in String s that end with String substring
     // You can assume there are no punctuation marks between words
     public static int wordsEndsWithSubstring(String s, String substring) {
-        return 0;
-    }
+        int endcount = 0;
+        String [] s1 = s.split(" ");
+    	String checkEnd;
+        for (int i = 0; i < s1.length; i++) {
+			checkEnd = s1[i].substring(s1[i].length()-substring.length(),s1[i].length());
+		if (checkEnd.contains(substring)) {
+			endcount++;
+		}
+        }
+				
+			
+			
+		
+    	
+    	return endcount;
+}
 
     // Given String s, return the number of characters between the first
     // occurrence of String substring and the final occurrence
