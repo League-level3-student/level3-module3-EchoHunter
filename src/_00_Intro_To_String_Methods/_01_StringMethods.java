@@ -130,10 +130,13 @@ public class _01_StringMethods {
         String [] s1 = s.split(" ");
     	String checkEnd;
         for (int i = 0; i < s1.length; i++) {
-			checkEnd = s1[i].substring(s1[i].length()-substring.length(),s1[i].length());
-		if (checkEnd.contains(substring)) {
+			if (s1[i].length()-substring.length() > 0) {
+        	checkEnd = s1[i].substring(s1[i].length()-substring.length(),s1[i].length());
+			
+        	if (checkEnd.contains(substring)) {
 			endcount++;
 		}
+			}
         }
 				
 			
