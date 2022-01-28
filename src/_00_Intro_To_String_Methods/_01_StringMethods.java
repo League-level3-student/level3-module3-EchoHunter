@@ -150,14 +150,75 @@ public class _01_StringMethods {
     // occurrence of String substring and the final occurrence
     // You can assume that substring will appear at least twice
     public static int distance(String s, String substring) {
-        return 0;
+        int retDist = 0;
+    	int fIndex = 0;
+    	int lIndex = 0;
+    	for (int i = 0; i < s.length()-substring.length(); i++) {
+			if(s.substring(i, i+substring.length()).equals(substring)){
+				fIndex = i;
+				break;
+			}
+		}
+    	for (int i = s.length(); i > 0; i--) {
+			if (s.substring(i-substring.length(),i).equals(substring)) {
+				lIndex = i-substring.length();
+				break;
+			}
+		}
+    	retDist = lIndex - (fIndex+substring.length());
+    	return retDist;
     }
 
     // Return true if String s is a palindrome
     // palindromes are words or phrases are read the same forward as backward.
     // HINT: ignore/remove all punctuation and spaces in the String
     public static boolean palindrome(String s) {
-        return true;
+        String replacer = " ";
+        String replacer1 = ";";
+        String replacer2 = "!";
+        String replacer3 = "?";
+        String replacer4 = ".";
+        String replacer5 = ",";
+        String replacer6 = ":";
+        if(s.contains(replacer)) {
+     	   s = s.replace(replacer,"");
+        }
+        if(s.contains(replacer1)) {
+      	   s = s.replace(replacer1,"");
+         }
+        if(s.contains(replacer2)) {
+      	   s = s.replace(replacer2,"");
+         }
+        if(s.contains(replacer3)) {
+      	   s = s.replace(replacer3,"");
+         }
+        if(s.contains(replacer4)) {
+      	   s = s.replace(replacer4,"");
+         }
+        if(s.contains(replacer5)) {
+      	   s = s.replace(replacer5,"");
+         }
+        if(s.contains(replacer6)) {
+      	   s = s.replace(replacer6,"");
+         }
+    	char[] s1 = s.toCharArray();
+        char[] holder = new char[s1.length];
+        int trueCount = 0;
+    	
+        for (int i = 0; i < s1.length; i++) {
+			if (s1[s1.length-i-1] != ' ') {
+				holder[i]=s1[s1.length-i-1];
+			}
+		}
+        for (int i = 0; i < holder.length; i++) {
+			if (holder[i]==s1[i]) {
+				trueCount++;
+			}
+		}
+        if (trueCount == holder.length) {
+			return true;
+		}
+    	return false;
     }
 }
 
