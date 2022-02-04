@@ -174,12 +174,12 @@ public class _01_StringMethods {
     // HINT: ignore/remove all punctuation and spaces in the String
     public static boolean palindrome(String s) {
         String replacer = " ";
-        String replacer1 = ";";
+        String replacer1 = ":";
         String replacer2 = "!";
         String replacer3 = "?";
         String replacer4 = ".";
         String replacer5 = ",";
-        String replacer6 = ":";
+        String replacer6 = "-";
         if(s.contains(replacer)) {
      	   s = s.replace(replacer,"");
         }
@@ -201,21 +201,16 @@ public class _01_StringMethods {
         if(s.contains(replacer6)) {
       	   s = s.replace(replacer6,"");
          }
-    	char[] s1 = s.toCharArray();
-        char[] holder = new char[s1.length];
-        int trueCount = 0;
+        s=s.toLowerCase();
+        char[] test = s.toCharArray();
+        int trueCounter = 0;
+    	for (int i = 0; i < (s.length())/2; i++) {
+    		if (test[i] == test[s.length()-1-i]) {
+				trueCounter++;
+			}
+		}
     	
-        for (int i = 0; i < s1.length; i++) {
-			if (s1[s1.length-i-1] != ' ') {
-				holder[i]=s1[s1.length-i-1];
-			}
-		}
-        for (int i = 0; i < holder.length; i++) {
-			if (holder[i]==s1[i]) {
-				trueCount++;
-			}
-		}
-        if (trueCount == holder.length) {
+    	if (trueCounter == (s.length())/2) {
 			return true;
 		}
     	return false;
