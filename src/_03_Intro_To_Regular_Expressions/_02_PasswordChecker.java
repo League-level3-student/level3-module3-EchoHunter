@@ -40,7 +40,7 @@ public class _02_PasswordChecker implements KeyListener {
      * 4. Check there is at least 1 special character, where special
      * characters are one of the following, @#$%^&-+=()
      */
-    static final String regexCriteria4 = "[^@#$%^&-+=()]";
+    static final String regexCriteria4 = "[@#$%^&-+=()]";
     
     /*
      * *BONUS* Add more password criteria. Some suggestions are:
